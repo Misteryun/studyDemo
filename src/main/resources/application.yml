@@ -8,8 +8,11 @@ spring:
     password: x.zC2QX.hQkX
 
 mybatis-plus:
+  #配置Mapper映射文件
   mapper-locations: classpath*:/mapper/*Mapper.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    map-underscore-to-camel-case: true
+    # 自动驼峰命名
+    map-underscore-to-camel-case: false
+  # 配置MyBatis数据返回类型别名（默认别名是类名）
   type-aliases-package: com.example.demo.entity

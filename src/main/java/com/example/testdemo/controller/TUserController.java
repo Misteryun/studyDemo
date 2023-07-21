@@ -1,6 +1,8 @@
 package com.example.testdemo.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.testdemo.common.ApiResult;
 import com.example.testdemo.entity.TUser;
 import com.example.testdemo.mapper.TUserMapper;
@@ -32,9 +34,22 @@ public class TUserController {
      * @return
      */
    @GetMapping("/test1")
-      public ApiResult test(){
+      public ApiResult test1(){
        Map<String, Object> stringObjectMap =tUserMapper.selectList1();
        return ApiResult.success(stringObjectMap);
    }
+
+    /**
+     * queryWrapper使用
+     * @return
+     */
+    @GetMapping("/queryWrapper")
+    public ApiResult test2(){
+        QueryWrapper<TUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", "1");
+        List<TUser> tUsers = tUserMapper.selectList(queryWrapper);
+        return ApiResult.success(tUsers);
+    }
+
 
 }
