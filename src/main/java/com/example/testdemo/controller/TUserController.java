@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.testdemo.common.ApiResult;
 import com.example.testdemo.entity.TUser;
 import com.example.testdemo.mapper.TUserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +26,7 @@ import java.util.Map;
  * @author author
  * @since 2023-07-21
  */
+@Slf4j
 @RestController
 @RequestMapping("/t-user")
 public class TUserController {
@@ -67,6 +68,7 @@ public class TUserController {
 
     /**
      * queryWrapper使用
+     * 日志等级打印
      * @return
      */
     @GetMapping("/queryWrapper")
@@ -74,6 +76,13 @@ public class TUserController {
         QueryWrapper<TUser> queryWrapper = new QueryWrapper<>();
 //        queryWrapper.eq("id", "1");
         List<TUser> tUsers = tUserMapper.selectList(queryWrapper);
+        String result = "Hello Spring Boot ! ";
+        System.out.println(result);
+        log.error("error log");
+        log.warn("warn log");
+        log.info("info log");
+        log.debug("debug log");
+        log.trace("trace log");
         return ApiResult.success(tUsers);
     }
 
