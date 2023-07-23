@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -38,8 +39,8 @@ public class TUser implements Serializable {
 
     private String passWord;
 
+//    private LocalDate birth;
     private Date birth;
-
     private Integer gender;
 
 

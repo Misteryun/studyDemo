@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +55,7 @@ public class TUserController {
         SimpleDateFormat si = new SimpleDateFormat ("yyyyMMdd");
         try {
             Date parse = si.parse(date1);
+//            LocalDate now1 = LocalDate.now();
             iUser.setBirth(parse);
         } catch (ParseException e) {
             e.printStackTrace();

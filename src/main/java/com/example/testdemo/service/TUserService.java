@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author author
  * @since 2023-07-21
  */
-public interface ITUserService extends IService<TUser> {
+public interface TUserService extends IService<TUser> {
 
 }
