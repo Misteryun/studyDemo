@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.testdemo.entity.TUser;
 import com.example.testdemo.mapper.TUserMapper;
 import com.example.testdemo.service.TUserService;
@@ -37,7 +38,7 @@ class TesTdemoApplicationTests {
     }
 
     /**
-     * 序列化对象
+     * mapper层封装的CRUD
      */
     @Test
     void lambdaQuery(){
@@ -90,6 +91,32 @@ class TesTdemoApplicationTests {
         }
     }
 
+    /**
+     * 更新数据库的数据
+     */
+    @Test
+    void updateType(){
+        //更新单个实体对象的某个字段
+        TUser tu = new TUser();
+        tu.setId(1);
+        tu.setType(1);
+        //tUserMapper.updateById(tu);
+        //更新多个实体对象的某个字段
+        UpdateWrapper updateWrapper = new UpdateWrapper<>();
+        updateWrapper.set("type",2);
+        //tUserMapper.update(null,updateWrapper);
+        //更新多个实体对象的多个字段
+        UpdateWrapper upList = new UpdateWrapper<>();
+        upList.set("type",2);
+        upList.set("gender",222);
+        tUserMapper.update(null,upList);
+    }
 
+    /**
+     * 新增数据库数据
+     */
+    void testInster(){
+
+    }
 
 }

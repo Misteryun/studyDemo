@@ -42,5 +42,5 @@ public class TUser implements Serializable {
     private Date birth;
     private Integer gender;
 
-
+    private Integer type;
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.testdemo.mapper.TUserMapper">
 
-    <select id="selectList1" resultType="Map" >
+    <select id="selectList1" resultType="java.util.Map" >
         select * from t_user;
     </select>
 

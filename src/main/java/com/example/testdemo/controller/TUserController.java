@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.testdemo.common.ApiResult;
 import com.example.testdemo.entity.TUser;
 import com.example.testdemo.mapper.TUserMapper;
+import com.example.testdemo.service.TUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p>
@@ -30,6 +29,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/t-user")
 public class TUserController {
+    @Autowired
+    private TUserService tUserService;
+
     @Autowired
     private TUserMapper tUserMapper;
 
@@ -84,6 +86,25 @@ public class TUserController {
         log.debug("debug log");
         log.trace("trace log");
         return ApiResult.success(tUsers);
+    }
+
+
+    /**
+     * list返回问题
+     */
+    @GetMapping("/list1")
+    public ApiResult list1(){
+        List<String> aa = new ArrayList<>();
+        aa.add("11111");
+        listAdd(aa);
+        ApiResult<List<String>> success = ApiResult.success(aa);
+        success.setCode("200");
+        return success;
+    };
+
+    public void listAdd(List<String> aa) {
+        System.out.println(aa);
+        aa.add("333");
     }
 
 
