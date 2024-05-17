@@ -10,6 +10,7 @@ import com.example.testdemo.service.TUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,10 +41,12 @@ public class TUserController {
      *
      * @return
      */
-   @GetMapping("/test1")
-      public ApiResult test1(){
-       Map<String, Object> stringObjectMap =tUserMapper.selectList1();
-       return ApiResult.success(stringObjectMap);
+   @GetMapping("/test1/{id}")
+      public ApiResult test1(@PathVariable("id") String id){
+       //List<TUser> stringObjectMap =tUserMapper.selectList1(id);
+        Map<String, Object> stringObjectMap1 = tUserMapper.selectMapById(id);
+        TUser tUser = tUserMapper.selectById("1");
+       return ApiResult.success(stringObjectMap1);
    }
 
 

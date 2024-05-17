@@ -37,8 +37,6 @@ public class TUser implements Serializable {
     private String email;
 
     private String passWord;
-
-//    private LocalDate birth;
     private Date birth;
     private Integer gender;
 
