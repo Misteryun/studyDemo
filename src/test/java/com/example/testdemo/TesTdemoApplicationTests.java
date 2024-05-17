@@ -2,7 +2,9 @@ package com.example.testdemo;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.testdemo.entity.TUser;
@@ -13,9 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import testpo.ProcessVO;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @SpringBootTest
 class TesTdemoApplicationTests {
@@ -115,8 +115,85 @@ class TesTdemoApplicationTests {
     /**
      * 新增数据库数据
      */
+    @Test
     void testInster(){
+        List<Map<String,Object>> listMap = new ArrayList<>();
+        List<Integer> list =Arrays.asList(1,2,3,4);
+        Map<String, Object> map = new HashMap<>();
+        for (int a:list) {
+                map.put("name",a);
+                System.out.println(map);
+            }
+        listMap.add(map);
+        System.out.println(listMap);
 
     }
 
+    @Test
+    void test1() {
+        JSONObject json1 = new JSONObject();
+        json1.put("a", "桃子");
+        json1.put("b", "桃子");
+        json1.put("c", "桃子");
+
+        JSONObject json2 = new JSONObject();
+        json2.put("a", "桃子");
+        json2.put("b", "桃子");
+        json2.put("c", "桃子");
+
+        JSONObject json3 = new JSONObject();
+        json3.put("a", "桃子");
+        json3.put("b", "桃子");
+        json3.put("c", "桃子");
+
+        List<JSONObject> list = new ArrayList<>();
+        list.add(json1);
+        list.add(json2);
+        list.add(json3);
+        System.out.println(JSONUtil.toJsonStr(list));
+        System.out.println(list);
+
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person("Alice", 25));
+        personList.add(new Person("Bob", 30));
+        personList.add(new Person("Charlie", 35));
+
+        // 使用 JSONUtil.toJsonStr 方法将 List 转换为 JSON 字符串
+        String jsonStr = JSONUtil.toJsonStr(personList);
+        // 打印转换后的 JSON 字符串
+        System.out.println(jsonStr);
+        Person person =  new Person("Charlie", 35);
+        JSONObject json = (JSONObject)JSONObject.toJSON(person);
+        System.out.println(json);
+    }
+
+    // 示例对象类
+    class Person {
+        private String name;
+        private int age;
+
+        // 构造函数
+        public Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        // getter 和 setter 方法
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+    }
 }
