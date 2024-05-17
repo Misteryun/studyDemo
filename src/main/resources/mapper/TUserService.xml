@@ -3,7 +3,7 @@
 <mapper namespace="com.example.testdemo.mapper.TUserMapper">
 
     <select id="selectList1" resultType="com.example.testdemo.entity.TUser" >
-        select * from t_user id=#{id}  ;
+        select * from t_user where  id=#{id}  ;
     </select>
 
 

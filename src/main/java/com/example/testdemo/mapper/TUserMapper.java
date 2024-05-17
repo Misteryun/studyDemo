@@ -26,5 +26,5 @@ public interface TUserMapper extends BaseMapper<TUser> {
      * @Param id
      * @Return map<字段名, 值>
      */
-    Map<String, Object> selectMapById(String id);
+    Map<String, String> selectMapById(String id);
 }

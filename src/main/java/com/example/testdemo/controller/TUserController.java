@@ -1,6 +1,10 @@
 package com.example.testdemo.controller;
 
 
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.testdemo.common.ApiResult;
@@ -43,10 +47,11 @@ public class TUserController {
      */
    @GetMapping("/test1/{id}")
       public ApiResult test1(@PathVariable("id") String id){
-       //List<TUser> stringObjectMap =tUserMapper.selectList1(id);
-        Map<String, Object> stringObjectMap1 = tUserMapper.selectMapById(id);
-        TUser tUser = tUserMapper.selectById("1");
-       return ApiResult.success(stringObjectMap1);
+       List<TUser> stringObjectMap =tUserMapper.selectList1(id);
+        JSONArray jsonArray = JSONUtil.parseArray(stringObjectMap);
+       Map<String, String> stringObjectMap1 = tUserMapper.selectMapById(id);
+        TUser tUser = tUserMapper.selectById(id);
+       return ApiResult.success(stringObjectMap);
    }
 
 
