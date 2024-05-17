@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -48,10 +49,12 @@ public class TUserController {
    @GetMapping("/test1/{id}")
       public ApiResult test1(@PathVariable("id") String id){
        List<TUser> stringObjectMap =tUserMapper.selectList1(id);
-        JSONArray jsonArray = JSONUtil.parseArray(stringObjectMap);
+       List<TUser> stringObjectAll =tUserMapper.findAll();
+        List<TUser> collect = stringObjectAll.stream().filter(s -> s.getId().equals(1)).collect(Collectors.toList());
+       JSONArray jsonArray = JSONUtil.parseArray(stringObjectMap);
        Map<String, String> stringObjectMap1 = tUserMapper.selectMapById(id);
         TUser tUser = tUserMapper.selectById(id);
-       return ApiResult.success(stringObjectMap);
+       return ApiResult.success(tUser);
    }
 
 

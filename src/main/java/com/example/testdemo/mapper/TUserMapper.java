@@ -27,4 +27,6 @@ public interface TUserMapper extends BaseMapper<TUser> {
      * @Return map<字段名, 值>
      */
     Map<String, String> selectMapById(String id);
+
+    List<TUser> findAll();
 }
