@@ -42,4 +42,14 @@ public class TUser implements Serializable {
     private Integer gender;
 
     private Integer type;
+
+    public TUser(Integer id, String userName, String email, String passWord) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.passWord = passWord;
+    }
+    public TUser() {
+
+    }
 }

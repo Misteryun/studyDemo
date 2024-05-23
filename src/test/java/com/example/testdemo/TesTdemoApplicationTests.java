@@ -99,7 +99,6 @@ class TesTdemoApplicationTests {
         //更新单个实体对象的某个字段
         TUser tu = new TUser();
         tu.setId(1);
-        tu.setType(1);
         //tUserMapper.updateById(tu);
         //更新多个实体对象的某个字段
         UpdateWrapper updateWrapper = new UpdateWrapper<>();
