@@ -1,10 +1,38 @@
 {
-  "passWord": "324324",
-  "gender": 222,
-  "birth": "2023-07-23T07:00:00",
-  "testId": 1,
-  "id": 1,
-  "userName": "小李",
-  "type": 2,
-  "email": "666"
+  "description": "Oauth2获取token",
+  "startTime": 1716561943855,
+  "spendTime": 159,
+  "basePath": "http://2.0.0.1:8401",
+  "uri": "/oauth/token",
+  "url": "http://2.0.0.1:8401/oauth/token",
+  "method": "POST",
+  "ip": "admin-app",
+  "parameter": [
+    {
+      "grant_type": "password"
+    },
+    {
+      "client_id": "admin-app"
+    },
+    {
+      "client_secret": "123456"
+    },
+    {},
+    {
+      "username": "admin"
+    },
+    {
+      "password": "macro123"
+    }
+  ],
+  "result": {
+    "code": 200,
+    "message": "操作成功",
+    "data": {
+      "token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJpZCI6MywiZXhwIjoxNzE2NjQ4MzQzLCJhdXRob3JpdGllcyI6WyI1X-i2hee6p-euoeeQhuWRmCJdLCJqdGkiOiJkMDE3YzlmOC1jNTQxLTQ4NDQtYmVmZS01NjEzZDUxOGVlN2IiLCJjbGllbnRfaWQiOiJhZG1pbi1hcHAifQ.jaU-mCeUmbFGjBeViMiznvtWSomvLRw9JSQC9rD6mgK1B0fo8wrgiydzxi7sVMCq2ZsOBP_xVJa5orAh3974qD2HqcHahJROfFaf7DuNnvFIzpbudlsUBdk8Glbr70FX0DITC-nFndfGXSmsRJLEw9M7tFSPVNWRAhxfA6LHeSw",
+      "refreshToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiJkMDE3YzlmOC1jNTQxLTQ4NDQtYmVmZS01NjEzZDUxOGVlN2IiLCJpZCI6MywiZXhwIjoxNzE3MTY2NzQzLCJhdXRob3JpdGllcyI6WyI1X-i2hee6p-euoeeQhuWRmCJdLCJqdGkiOiI4M2M3OTFmOC03ZTU4LTQyYjItYmFlMi1iNzRiYmRjZThmZDMiLCJjbGllbnRfaWQiOiJhZG1pbi1hcHAifQ.W0JWh_n8sjJBwvwY6EI7DXUsVHfwFUnvnR7iakr2RIDa0jRA8PS_qC4gdg9PG9Q-wzO9-GiNoV1IrMKu_QzWJDXv1pdFX7GvarMi9caEWoZBnd3EPcqLupLbzWpFxU8RTRMCLWCCyjp4kp8QN3n5g1KC_ac07BPZ1wWJg7kTiO4",
+      "tokenHead": "Bearer ",
+      "expiresIn": 86399
+    }
+  }
 }

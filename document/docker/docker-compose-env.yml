@@ -1,0 +1,14 @@
+##参考网址https://www.macrozheng.com/mall/deploy/mall_deploy_docker.html#redis%E5%AE%89%E8%A3%85
+## Docker Desktop 安装使用教程 https://blog.csdn.net/GoodburghCottage/article/details/131413312
+本地数据库mysql:
+  用户：root
+  密码：root
+  docker pull mysql:8.0.28
+  docker run -p 3306:3306 --name mysql  -e MYSQL_ROOT_PASSWORD=root  -d mysql:8.0.28
+
+本地reids
+  docker pull redis:7
+  docker run -p 6379:6379 --name redis -d redis:7 redis-server --appendonly yes
+
+
+
