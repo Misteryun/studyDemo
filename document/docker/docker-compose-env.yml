@@ -1,14 +1,25 @@
 ##参考网址https://www.macrozheng.com/mall/deploy/mall_deploy_docker.html#redis%E5%AE%89%E8%A3%85
 ## Docker Desktop 安装使用教程 https://blog.csdn.net/GoodburghCottage/article/details/131413312
+  ##进入容器
+  docker exec -it bdf4bb7ddfae sh
+  ##拷贝容易目录到本机
+  docker cp bdf4bb7ddfae:/conf /4-Download
+
+
 本地数据库mysql:
   用户：root
   密码：root
   docker pull mysql:8.0.28
   docker run -p 3306:3306 --name mysql  -e MYSQL_ROOT_PASSWORD=root  -d mysql:8.0.28
+  jdbc:mysql://127.0.0.1:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
 
-本地reids
+##本地reids
   docker pull redis:7
   docker run -p 6379:6379 --name redis -d redis:7 redis-server --appendonly yes
+##本地nacos
+  ##访问网址：https：127.0.0.1:8848/nacos 账号：nacos 密码：nacos
+  docker pull nacos/nacos-server:v2.1.1
+  docker  run --name nacos -d -p 8848:8848  nacos/nacos-server:v2.1.1
 
 
 
