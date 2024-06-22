@@ -1,5 +1,6 @@
 package com.example.testdemo;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
@@ -7,6 +8,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.example.testdemo.entity.Study;
+import com.example.testdemo.entity.Study1;
 import com.example.testdemo.entity.TUser;
 import com.example.testdemo.mapper.TUserMapper;
 import com.example.testdemo.service.TUserService;
@@ -194,5 +197,38 @@ class TesTdemoApplicationTests {
             this.age = age;
         }
 
+    }
+
+    /**
+     * jsonObject转String
+     */
+    @Test
+    void jsonObject(){
+
+        JSONObject json = new JSONObject();
+        json.put("name",1);
+        json.put("age",15);
+        //JSONObject转字符串
+        String  s = JSONUtil.toJsonStr(json);
+        System.out.println(s);
+        //字符串转JSONObject
+        final cn.hutool.json.JSONObject jsonObject = JSONUtil.parseObj(s);
+        System.out.println(jsonObject);
+        //字符串转对象
+         Study study2 = JSONUtil.toBean(s, Study.class);
+        System.out.println(study2);
+        ////对象转JSONObject
+        final cn.hutool.json.JSONObject jsonObject1 = JSONUtil.parseObj(study2);
+
+        //浅拷贝，复制属性的引用，而不复制引用对象本身。
+        Study study1 = new Study();
+        study1.setName("23");
+        study1.setAge("66");
+        Study study5 = new Study();
+        BeanUtil.copyProperties(study1,study5);
+        study1.setName("5555");
+
+        //深拷贝：使用 CloneUtil.clone 方法，递归地复制对象的所有字段，使新对象与原始对象完全独立，
+        // 修改新对象不会影响原始对象
     }
 }
