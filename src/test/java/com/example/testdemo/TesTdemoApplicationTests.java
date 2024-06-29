@@ -230,6 +230,9 @@ class TesTdemoApplicationTests {
 
         //深拷贝：使用 CloneUtil.clone 方法，递归地复制对象的所有字段，使新对象与原始对象完全独立，
         // 修改新对象不会影响原始对象
+
+        System.out.println("第一次提交");
+        System.out.println("第二次提交");
     }
 
 }
