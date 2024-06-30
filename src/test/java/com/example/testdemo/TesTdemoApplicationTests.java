@@ -250,6 +250,6 @@ class TesTdemoApplicationTests {
         user.setPassWord("666666");
         final int i = tUserMapper.update(user,lambdaUpdateWrapper);
         final TUser tUser = tUserMapper.selectById(user);
-        log.info("第二次查询：{}",JSONUtil.toJsonStr(tUser));
+        log.info("第三次次查询：{}",JSONUtil.toJsonStr(tUser));
     }
 }
