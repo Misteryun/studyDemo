@@ -6,14 +6,18 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.testdemo.entity.Study;
 import com.example.testdemo.entity.Study1;
 import com.example.testdemo.entity.TUser;
 import com.example.testdemo.mapper.TUserMapper;
 import com.example.testdemo.service.TUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import testpo.ProcessVO;
@@ -21,6 +25,7 @@ import testpo.ProcessVO;
 import java.util.*;
 
 @SpringBootTest
+@Slf4j
 class TesTdemoApplicationTests {
 
     @Autowired
@@ -230,5 +235,21 @@ class TesTdemoApplicationTests {
 
         //深拷贝：使用 CloneUtil.clone 方法，递归地复制对象的所有字段，使新对象与原始对象完全独立，
         // 修改新对象不会影响原始对象
+    }
+
+    @Test
+    void updateWrapper(){
+        LambdaQueryWrapper<TUser> lambdaQueryWrapper = new LambdaQueryWrapper();
+        final TUser tUsers = tUserMapper.selectOne(lambdaQueryWrapper.eq(TUser::getId, "1"));
+        log.info("tUsers{}",JSONUtil.toJsonStr(tUsers));
+        LambdaUpdateWrapper<TUser>  lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
+        lambdaUpdateWrapper.eq(TUser::getId,"1");
+        lambdaUpdateWrapper.set(TUser::getPassWord,"666666");
+        TUser user = new TUser();
+        user.setId(1);
+        user.setPassWord("666666");
+        final int i = tUserMapper.update(user,lambdaUpdateWrapper);
+        final TUser tUser = tUserMapper.selectById(user);
+        log.info("第二次查询：{}",JSONUtil.toJsonStr(tUser));
     }
 }
