@@ -2,6 +2,9 @@ package com.example.testdemo;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.convert.Convert;
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
@@ -22,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import testpo.ProcessVO;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @SpringBootTest
@@ -251,5 +255,26 @@ class TesTdemoApplicationTests {
         final int i = tUserMapper.update(user,lambdaUpdateWrapper);
         final TUser tUser = tUserMapper.selectById(user);
         log.info("第四次次查询：{}",JSONUtil.toJsonStr(tUser));
+        LambdaUpdateWrapper<TUser>  lambdaUpdateWrapper1 = new LambdaUpdateWrapper<>();
+        lambdaUpdateWrapper1.eq(TUser::getUserName,"小李");
+        lambdaUpdateWrapper1.set(TUser::getPassWord,"8888888");
+        tUserService.update(lambdaUpdateWrapper1);
+    }
+
+    /**
+     * Convert/DateUtil 类练习
+     */
+    @Test
+    void convertTest(){
+        String s = "2017-02-26";
+        final Date date = Convert.toDate(s);
+        System.out.println(date);
+        BigDecimal big = new BigDecimal("780000.456");
+        final String s1 = Convert.digitToChinese(big);
+        System.out.println(s1);
+        final Date parse = DateUtil.parse(s);
+        final String format = DateUtil.format(parse, "yyyy-MM-dd");
+        System.out.println(format);
+
     }
 }
