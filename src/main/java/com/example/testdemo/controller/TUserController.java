@@ -54,6 +54,7 @@ public class TUserController {
        JSONArray jsonArray = JSONUtil.parseArray(stringObjectMap);
        Map<String, String> stringObjectMap1 = tUserMapper.selectMapById(id);
         TUser tUser = tUserMapper.selectById(id);
+
        return ApiResult.success(tUser);
    }
 
